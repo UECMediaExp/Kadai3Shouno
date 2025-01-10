@@ -1,3 +1,10 @@
+# Docker 関連は追従しない
+.devcontainer/
+docker-compose.yml
+Dockerfile
+requirements.txt
+
+# data も追従しない
 data/
 
 # Byte-compiled / optimized / DLL files
