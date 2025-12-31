@@ -1,0 +1,53 @@
+{
+    "name": "Python3-Slim",
+    // 1. Dockerfileの指定
+    "build": {
+        "dockerfile": "../Dockerfile",
+        "context": "..",
+        // Dockerfile内のARGに変数を渡す
+        "args": {
+            // ローカル環境のユーザー名やIDをコンテナ内のユーザーに合わせる
+            // これにより、ファイルのパーミッション問題を防ぎやすくなります。
+            "USERNAME": "${localEnv:USER}",
+            "USER_UID": "1000",
+            "USER_GID": "1000"
+        }
+    },
+    // pyproject.toml に dependencies 書いているので requirements.txt は不要？
+    "postCreateCommand": "python3 -m pip install -U pip setuptools wheel && pip install -e .",
+    // 2. GPU無効化
+    "dev.containers.gpuAvailability": "none",
+    "runArgs": [
+        //"--gpus",
+        //"all",
+        // （任意）大規模なデータを扱う場合、共有メモリサイズを増やすと効果的なことがあります
+        "--shm-size=8g"
+    ],
+    // 3. VSCodeの設定
+    "customizations": {
+        "vscode": {
+            // コンテナ内で自動的にインストールする拡張機能
+            "extensions": [
+                "ms-python.python", // Python
+                "ms-toolsai.jupyter", // Jupyter Notebook
+                "ms-vscode.cpptools", // C/C++
+                "eamodio.gitlens", // GitLens
+                "njpwerner.autodocstring" // Python Docstring Generator
+            ],
+            // コンテナ内のVSCodeの設定
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "python.defaultInterpreterPath": "/usr/bin/python3",
+                "python.analysis.autoImportCompletions": true,
+                "python.analysis.extraPaths": [
+                    "${containerWorkspaceFolder}"
+                ]
+            }
+        }
+    },
+    // 4. ワークスペースのマウント設定
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+    "workspaceFolder": "/workspace",
+    // 5. コンテナに接続するユーザー
+    "remoteUser": "${localEnv:USER}"
+}

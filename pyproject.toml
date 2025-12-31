@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lecture3"
+version = "0.1.0"
+description = "lecture 3 on experiments"
+authors = [{ name = "Hayaru Shouno" }]
+readme = "README.md"
+requires-python = ">=3.12"
+
+dependencies = [
+    "numpy",
+    "scipy",
+    "matplotlib",
+    "scikit-learn",
+    "seaborn",
+    "ipykernel",
+    "ipython",
+    "joblib",
+    "pandas",
+    "Pillow",
+    "six",
+    "torch",
+    "torchvision",
+    "torchaudio",
+]
+
+
+#[tool.setuptools.packages.find]
+#where = ["."]
+#include = ["sslcompare*"]

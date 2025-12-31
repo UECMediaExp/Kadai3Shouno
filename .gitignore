@@ -1,12 +1,8 @@
-# Docker 関連は追従しない
-.devcontainer/
-docker-compose.yml
-Dockerfile
-requirements.txt
-jupyter_notebook_config.py
+# untrack mac dependency
+.DS_Store
 
-# data も追従しない
-data/
+# untrack vscode dependency
+.vscode
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
