@@ -1,6 +1,7 @@
 numpy
 scipy
 matplotlib
+umap-learn
 scikit-learn
 seaborn
 ipykernel

@@ -15,6 +15,7 @@ dependencies = [
     "scipy",
     "matplotlib",
     "scikit-learn",
+    "umap-learn",
     "seaborn",
     "ipykernel",
     "ipython",
