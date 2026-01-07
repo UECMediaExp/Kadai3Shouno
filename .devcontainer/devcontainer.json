@@ -14,7 +14,8 @@
         }
     },
     // pyproject.toml に dependencies 書いているので requirements.txt は不要？
-    "postCreateCommand": "python3 -m pip install -U pip setuptools wheel && pip install -e .",
+    // "postCreateCommand": "python3 -m pip install -U pip setuptools wheel && pip install -e .",
+    "postCreateCommand": "python3 -m pip install -U pip setuptools wheel && python3 -m pip install -r requirements.txt",
     // 2. GPU無効化
     "dev.containers.gpuAvailability": "none",
     "runArgs": [
@@ -37,7 +38,7 @@
             // コンテナ内のVSCodeの設定
             "settings": {
                 "terminal.integrated.defaultProfile.linux": "bash",
-                "python.defaultInterpreterPath": "/usr/bin/python3",
+                "python.defaultInterpreterPath": "/usr/local/bin/python3",
                 "python.analysis.autoImportCompletions": true,
                 "python.analysis.extraPaths": [
                     "${containerWorkspaceFolder}"

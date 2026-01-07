@@ -1,5 +1,5 @@
 # ベースイメージはとりあえず 3.13 の slim で．(2025年末版)
-FROM python:3.13-slim
+FROM python:3.12-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -39,6 +39,7 @@ RUN python3 -m pip install --no-cache-dir -r /tmp/requirements.txt
 
 # config workspace
 USER $USERNAME
+ENV PATH="/home/${USERNAME}/.local/bin:${PATH}"
 WORKDIR /workspace
 
 
