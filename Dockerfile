@@ -1,4 +1,4 @@
-# ベースイメージはとりあえず 3.13 の slim で．(2025年末版)
+# ベースイメージはとりあえず 3.12 の slim で．(2025年末版)
 FROM python:3.12-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
